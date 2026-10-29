@@ -30,6 +30,7 @@ const (
 	OSType_IPadOS      OSType = 3
 	OSType_OSX         OSType = 4
 	OSType_WatchOS     OSType = 5
+	OSType_Server      OSType = 6 // Устройство на стороне сервера, например MCP
 )
 
 // Enum value maps for OSType.
@@ -41,6 +42,7 @@ var (
 		3: "IPadOS",
 		4: "OSX",
 		5: "WatchOS",
+		6: "Server",
 	}
 	OSType_value = map[string]int32{
 		"Unspecified": 0,
@@ -49,6 +51,7 @@ var (
 		"IPadOS":      3,
 		"OSX":         4,
 		"WatchOS":     5,
+		"Server":      6,
 	}
 )
 
@@ -83,7 +86,7 @@ var File_proto_enums_osType_proto protoreflect.FileDescriptor
 
 const file_proto_enums_osType_proto_rawDesc = "" +
 	"\n" +
-	"\x18proto/enums/osType.proto\x12\x06osType*Q\n" +
+	"\x18proto/enums/osType.proto\x12\x06osType*]\n" +
 	"\x06OSType\x12\x0f\n" +
 	"\vUnspecified\x10\x00\x12\v\n" +
 	"\aAndroid\x10\x01\x12\a\n" +
@@ -91,7 +94,9 @@ const file_proto_enums_osType_proto_rawDesc = "" +
 	"\n" +
 	"\x06IPadOS\x10\x03\x12\a\n" +
 	"\x03OSX\x10\x04\x12\v\n" +
-	"\aWatchOS\x10\x05B\bZ\x06/protob\x06proto3"
+	"\aWatchOS\x10\x05\x12\n" +
+	"\n" +
+	"\x06Server\x10\x06B\bZ\x06/protob\x06proto3"
 
 var (
 	file_proto_enums_osType_proto_rawDescOnce sync.Once
