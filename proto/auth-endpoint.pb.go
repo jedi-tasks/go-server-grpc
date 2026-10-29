@@ -140,6 +140,7 @@ type DeviceInformation struct {
 	NameOS        OSType                 `protobuf:"varint,3,opt,name=nameOS,proto3,enum=osType.OSType" json:"nameOS,omitempty"` // Название операционной системы
 	VersionOS     string                 `protobuf:"bytes,4,opt,name=versionOS,proto3" json:"versionOS,omitempty"`               // Версия операционной системы
 	IpAddress     string                 `protobuf:"bytes,5,opt,name=ipAddress,proto3" json:"ipAddress,omitempty"`               // IP адрес
+	Stateless     bool                   `protobuf:"varint,6,opt,name=stateless,proto3" json:"stateless,omitempty"`              // Устройство без локальной копии данных: всегда читает сервер перед записью, проверка синхронизации перед правками не нужна
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -207,6 +208,13 @@ func (x *DeviceInformation) GetIpAddress() string {
 		return x.IpAddress
 	}
 	return ""
+}
+
+func (x *DeviceInformation) GetStateless() bool {
+	if x != nil {
+		return x.Stateless
+	}
+	return false
 }
 
 type SignInRequest struct {
@@ -708,7 +716,7 @@ const file_proto_auth_auth_endpoint_proto_rawDesc = "" +
 	"\x16ApplicationInformation\x12\x18\n" +
 	"\aversion\x18\x01 \x01(\tR\aversion\x12\x14\n" +
 	"\x05build\x18\x02 \x01(\tR\x05build\x12\x1a\n" +
-	"\bbundleID\x18\x03 \x01(\tR\bbundleID\"\xb5\x01\n" +
+	"\bbundleID\x18\x03 \x01(\tR\bbundleID\"\xd3\x01\n" +
 	"\x11DeviceInformation\x12\x1e\n" +
 	"\n" +
 	"deviceName\x18\x01 \x01(\tR\n" +
@@ -716,7 +724,8 @@ const file_proto_auth_auth_endpoint_proto_rawDesc = "" +
 	"\tmodelName\x18\x02 \x01(\tR\tmodelName\x12&\n" +
 	"\x06nameOS\x18\x03 \x01(\x0e2\x0e.osType.OSTypeR\x06nameOS\x12\x1c\n" +
 	"\tversionOS\x18\x04 \x01(\tR\tversionOS\x12\x1c\n" +
-	"\tipAddress\x18\x05 \x01(\tR\tipAddress\"\xce\x01\n" +
+	"\tipAddress\x18\x05 \x01(\tR\tipAddress\x12\x1c\n" +
+	"\tstateless\x18\x06 \x01(\bR\tstateless\"\xce\x01\n" +
 	"\rSignInRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12>\n" +
